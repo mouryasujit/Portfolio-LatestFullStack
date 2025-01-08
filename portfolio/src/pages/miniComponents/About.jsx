@@ -32,8 +32,8 @@ const About = () => {
           </div>
           <div className="flex justify-center flex-col tracking-[1px] text-xl gap-5">
             <p>
-              My name is Zeeshan, but my followers call me Zeeshu. I will
-              graduate in Software Engineering from SMIU around 2024. I work as
+              My name is Sujitkumar Mourya I will
+              graduate in Software Engineering from Thakur College Of Engineering and Technology around 2025. I work as
               a web developer and freelancer. My hobbies include watching
               movies, series, playing video games, and occasionally cooking.
             </p>

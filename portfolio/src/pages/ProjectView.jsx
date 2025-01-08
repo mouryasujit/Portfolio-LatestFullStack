@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -19,26 +19,28 @@ const ProjectView = () => {
   useEffect(() => {
     const getProject = async () => {
       await axios
-        .get(`https://mern-stack-portfolio-backend-code.onrender.com/api/v1/project/get/${id}`, {
+        .get(`http://localhost:8000/api/v1/project/get/${id}`, {
           withCredentials: true,
         })
         .then((res) => {
-          setTitle(res.data.project.title);
-          setDescription(res.data.project.description);
-          setStack(res.data.project.stack);
-          setDeployed(res.data.project.deployed);
-          setTechnologies(res.data.project.technologies);
-          setGitRepoLink(res.data.project.gitRepoLink);
-          setProjectLink(res.data.project.projectLink);
+          setTitle(res?.data?.project.title);
+          setDescription(res?.data?.project.description);
+          setStack(res?.data?.project.stack);
+          setDeployed(res?.data?.project.deployed);
+          setTechnologies(res?.data?.project.technologies);
+          setGitRepoLink(res?.data?.project.gitRepoLink);
+          setProjectLink(res?.data?.project.projectLink);
           setProjectBanner(
-            res.data.project.projectBanner && res.data.project.projectBanner.url
+            res?.data?.project.projectBanner &&
+              res?.data?.project.projectBanner.url
           );
           setProjectBannerPreview(
-            res.data.project.projectBanner && res.data.project.projectBanner.url
+            res?.data?.project.projectBanner &&
+              res?.data?.project.projectBanner.url
           );
         })
         .catch((error) => {
-          toast.error(error.response.data.message);
+          toast.error(error?.response?.data.message);
         });
     };
     getProject();

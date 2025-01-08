@@ -1,10 +1,9 @@
-import React from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useSelector } from "react-redux";
 import { Textarea } from "@/components/ui/textarea";
 import { Link } from "react-router-dom";
-
+import { User2 } from "lucide-react";
 const Profile = () => {
   const { user } = useSelector((state) => state.user);
   return (
@@ -29,13 +28,14 @@ const Profile = () => {
                   />
                 </div>
                 <div className="grid gap-2 w-full sm:w-72">
-                  <Label>Resume</Label>
-                  <Link to={user && user.resume && user.resume.url} target="_blank">
-                    <img
-                      src={user && user.resume && user.resume.url}
-                      alt="avatar"
-                      className="w-full  h-auto sm:w-72 sm:h-72 rounded-2xl"
-                    />
+                  <Label>See My Resume</Label>
+                  <Link
+                    to={user && user.resume && user.resume.url}
+                    target="_blank"
+                  >
+                    
+                      <User2 />
+              
                   </Link>
                 </div>
               </div>
@@ -76,8 +76,8 @@ const Profile = () => {
                 <Input type="text" defaultValue={user.twitterURL} disabled />
               </div>
               <div className="grid gap-2">
-                <Label>Facebook URL</Label>
-                <Input type="text" defaultValue={user.facebookURL} disabled />
+                <Label>Leetcode URL</Label>
+                <Input type="text" defaultValue={user.leetcodeURL} disabled />
               </div>
             </div>
           </div>

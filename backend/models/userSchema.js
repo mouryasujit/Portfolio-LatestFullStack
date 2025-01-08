@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import crypto from "crypto"
+import crypto from "crypto";
 
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password Required!"],
     minLength: [8, "Password Must Contain At Least 8 Characters!"],
-    select: false
+    select: false,
   },
   avatar: {
     public_id: {
@@ -62,7 +62,7 @@ const userSchema = new mongoose.Schema({
   linkedInURL: {
     type: String,
   },
-  facebookURL: {
+  leetcodeURL: {
     type: String,
   },
   resetPasswordToken: String,
@@ -81,11 +81,8 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 };
 
 userSchema.methods.generateJsonWebToken = function () {
-  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: process.env.JWT_EXPIRES,
-  });
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY);
 };
-
 
 //Generating Reset Password Token
 userSchema.methods.getResetPasswordToken = function () {

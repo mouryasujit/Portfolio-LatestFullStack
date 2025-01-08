@@ -10,10 +10,10 @@ const Portfolio = () => {
   useEffect(() => {
     const getMyProjects = async () => {
       const { data } = await axios.get(
-        "https://mern-stack-portfolio-backend-code.onrender.com/api/v1/project/getall",
+        "http://localhost:8000/api/v1/project/getall",
         { withCredentials: true }
       );
-      setProjects(data.projects);
+      setProjects(data.reversedProjects);
     };
     getMyProjects();
   }, []);

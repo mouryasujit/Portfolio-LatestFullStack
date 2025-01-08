@@ -31,8 +31,9 @@ export const deleteTimeline = catchAsyncErrors(async (req, res, next) => {
 
 export const getAllTimelines = catchAsyncErrors(async (req, res, next) => {
   const timelines = await Timeline.find();
+  const reverseTimeLine = timelines.reverse();
   res.status(200).json({
     success: true,
-    timelines,
+    reverseTimeLine,
   });
 });

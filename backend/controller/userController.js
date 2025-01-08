@@ -11,11 +11,11 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Avatar Required!", 400));
   }
   const { avatar, resume } = req.files;
-
+  console.log(avatar, resume);
   //POSTING AVATAR
   const cloudinaryResponseForAvatar = await cloudinary.uploader.upload(
     avatar.tempFilePath,
-    { folder: "PORTFOLIO AVATAR" }
+    { folder: "PORTFOLIO AVATAR", resource_type: "auto" }
   );
   if (!cloudinaryResponseForAvatar || cloudinaryResponseForAvatar.error) {
     console.error(
@@ -28,7 +28,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
   //POSTING RESUME
   const cloudinaryResponseForResume = await cloudinary.uploader.upload(
     resume.tempFilePath,
-    { folder: "PORTFOLIO RESUME" }
+    { folder: "PORTFOLIO RESUME", resource_type: "auto" }
   );
   if (!cloudinaryResponseForResume || cloudinaryResponseForResume.error) {
     console.error(
@@ -63,12 +63,12 @@ export const register = catchAsyncErrors(async (req, res, next) => {
     facebookURL,
     linkedInURL,
     avatar: {
-      public_id: cloudinaryResponse.public_id, // Set your cloudinary public_id here
-      url: cloudinaryResponse.secure_url, // Set your cloudinary secure_url here
+      public_id: cloudinaryResponseForAvatar.public_id,
+      url: cloudinaryResponseForAvatar.secure_url,
     },
     resume: {
-      public_id: cloudinaryResponse.public_id, // Set your cloudinary public_id here
-      url: cloudinaryResponse.secure_url, // Set your cloudinary secure_url here
+      public_id: cloudinaryResponseForResume.public_id,
+      url: cloudinaryResponseForResume.secure_url,
     },
   });
   generateToken(user, "Registered!", 201, res);
@@ -104,7 +104,7 @@ export const logout = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUser = catchAsyncErrors(async (req, res, next) => {
-  const user = await User.findById(req.user.id);
+  const user = await User.find();
   res.status(200).json({
     success: true,
     user,
@@ -120,7 +120,7 @@ export const updateProfile = catchAsyncErrors(async (req, res, next) => {
     githubURL: req.body.githubURL,
     instagramURL: req.body.instagramURL,
     portfolioURL: req.body.portfolioURL,
-    facebookURL: req.body.facebookURL,
+    leetcodeURL: req.body.leetcodeURL,
     twitterURL: req.body.twitterURL,
     linkedInURL: req.body.linkedInURL,
   };
@@ -193,7 +193,7 @@ export const updatePassword = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const getUserForPortfolio = catchAsyncErrors(async (req, res, next) => {
-  const id = "663296a896e553748ab5b0be";
+  const id = "677ea2c2f2aa5a7944b935ca";
   const user = await User.findById(id);
   res.status(200).json({
     success: true,

@@ -118,9 +118,10 @@ export const deleteProject = catchAsyncErrors(async (req, res, next) => {
 
 export const getAllProjects = catchAsyncErrors(async (req, res, next) => {
   const projects = await Project.find();
+  const reversedProjects = projects.reverse();
   res.status(200).json({
     success: true,
-    projects,
+    reversedProjects,
   });
 });
 

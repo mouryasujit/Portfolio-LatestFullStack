@@ -36,8 +36,8 @@ const UpdateProfile = () => {
   const [twitterURL, setTwitterURL] = useState(
     user && (user.twitterURL === "undefined" ? "" : user.twitterURL)
   );
-  const [facebookURL, setFacebookURL] = useState(
-    user && (user.facebookURL === "undefined" ? "" : user.facebookURL)
+  const [leetcodeURL, setFacebookURL] = useState(
+    user && (user.leetcodeURL === "undefined" ? "" : user.leetcodeURL)
   );
   const [avatar, setAvatar] = useState(user && user.avatar && user.avatar.url);
   const [avatarPreview, setAvatarPreview] = useState(
@@ -80,7 +80,7 @@ const UpdateProfile = () => {
     formData.append("githubURL", githubURL);
     formData.append("instagramURL", instagramURL);
     formData.append("twitterURL", twitterURL);
-    formData.append("facebookURL", facebookURL);
+    formData.append("leetcodeURL", leetcodeURL);
     formData.append("avatar", avatar);
     formData.append("resume", resume);
     dispatch(updateProfile(formData));
@@ -231,11 +231,11 @@ const UpdateProfile = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label>Facebook URL</Label>
+                <Label>Leetcode URL</Label>
                 <Input
                   type="text"
                   className="Facebook URL"
-                  value={facebookURL}
+                  value={leetcodeURL}
                   onChange={(e) => setFacebookURL(e.target.value)}
                 />
               </div>
