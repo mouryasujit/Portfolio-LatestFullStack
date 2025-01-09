@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Portfolio = () => {
