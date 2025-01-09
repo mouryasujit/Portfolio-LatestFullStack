@@ -54,20 +54,22 @@ const Portfolio = () => {
                   <img
                     src={element.projectBanner && element.projectBanner.url}
                     alt={element.title}
+                    className="h-32 w-full"
                   />
-                  <Button>Visit Website</Button>
+                  <Button className="my-2">Visit Website</Button>
                 </Link>
               );
             })
           : projects &&
             projects.slice(0, 9).map((element) => {
               return (
-                <Link to={`/project/${element._id}`} key={element._id}>
+                <Link to={`/project/${element._id}`} key={element._id} >
                   <img
                     src={element.projectBanner && element.projectBanner.url}
                     alt={element.title}
+                    className="h-32 w-full"
                   />
-                  <Button>Visit Website</Button>
+                  <Button className="my-2">Visit Website</Button>
                 </Link>
               );
             })}
