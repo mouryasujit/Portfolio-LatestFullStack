@@ -3,21 +3,26 @@ import { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import LoadingSpinner from "./LoadingSpinner";
 
 const Hero = () => {
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const getMyProfile = async () => {
+      setLoading(true);
       const { data } = await axios.get(
         "https://portfolio-latestfullstack.onrender.com/api/v1/user/portfolio/me",
         { withCredentials: true }
       );
       setUser(data.user);
+      setLoading(false);
     };
     getMyProfile();
   }, []);
   return (
     <div className="w-full">
+      {loading && <LoadingSpinner />}
       <div className="flex items-center gap-2 mb-2">
         <span className="bg-green-400 rounded-full h-2 w-2"></span>
         <p>Online</p>
