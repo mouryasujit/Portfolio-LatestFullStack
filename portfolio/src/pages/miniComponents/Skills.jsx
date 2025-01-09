@@ -45,7 +45,7 @@ const Skills = () => {
               );
             })
           : skills &&
-            skills.slice(0, 9).map((element) => {
+            skills.slice(0, 10).map((element) => {
               return (
                 <Card
                   className="h-fit p-7 flex flex-col justify-center items-center gap-3"
@@ -63,7 +63,7 @@ const Skills = () => {
               );
             })}
       </div>
-      {skills && skills.length > 9 && (
+      {skills && skills.length > 10 && (
         <div className="w-full text-center my-9">
           <Button className="w-52" onClick={() => setViewAll(!viewAll)}>
             {viewAll ? "Show Less" : "Show More"}
