@@ -55,6 +55,7 @@ const Portfolio = () => {
                     src={element.projectBanner && element.projectBanner.url}
                     alt={element.title}
                   />
+                  <Button>Visit Website</Button>
                 </Link>
               );
             })

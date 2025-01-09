@@ -32,10 +32,11 @@ const About = () => {
           </div>
           <div className="flex justify-center flex-col tracking-[1px] text-xl gap-5">
             <p>
-              My name is Sujitkumar Mourya I will
-              graduate in Software Engineering from Thakur College Of Engineering and Technology around 2025. I work as
-              a web developer and freelancer. My hobbies include watching
-              movies, series, playing video games, and occasionally cooking.
+              I'm Sujitkumar Mourya, a soon-to-be Computer Engineering graduate
+              from Thakur College of Engineering and Technology (expected
+              graduation: 2025). I currently work as a freelance web developer.
+              In my spare time, I enjoy watching movies and TV series, playing
+              video games, and occasionally trying my hand at cooking.
             </p>
             <p>
               I have interests not only in technology but also in movies,
